@@ -74,7 +74,34 @@ public class ExamplesecurityApplication {
 		userbynameandcity.forEach(e -> System.out.println(e));
 		
 		
+		List<User> allusers=userRepository.getAllUser();
 		
+		allusers.forEach(e->{
+			
+			System.out.println(e);
+		
+		});
+		
+		
+		List<User> userbynamequery=userRepository.getUserByName("Ankit");
+		
+		userbynamequery.forEach(e->{
+			System.out.println(e);
+		});
+		
+		
+		List<User> allusersbysql=userRepository.getUsers();
+		
+		allusersbysql.forEach(e->{
+			System.out.println(e);
+		});
+		
+		
+		
+		
+		
+		
+ 		
 	}
 
 }
