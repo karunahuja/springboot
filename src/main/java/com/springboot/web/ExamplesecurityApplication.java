@@ -14,60 +14,67 @@ import com.sun.el.stream.Optional;
 public class ExamplesecurityApplication {
 
 	public static void main(String[] args) {
-	ApplicationContext context= SpringApplication.run(ExamplesecurityApplication.class, args);
-	
-	UserRepository userRepository=context.getBean(UserRepository.class);
-	
-	/*
-	 * User user=(User) new com.springboot.web.entities.User();
-	 * user.setName("karun1"); user.setCity("sangrur");
-	 * user.setStatus("Java programmer");
-	 * 
-	 * //User user1=userRepository.save(user); User user1=new User();
-	 * user1.setName("ahuja1"); user1.setCity("city2"); user1.setStatus("python ");
-	 * 
-	 * List<User> users=List.of(user1,user);
-	 * 
-	 * //insert Iterable<User> resultUser=userRepository.saveAll(users);
-	 * 
-	 * System.out.println(resultUser);
-	 * 
-	 */
-	
-	
-	//update
- java.util.Optional<User> optional= userRepository.findById(2);
+		ApplicationContext context = SpringApplication.run(ExamplesecurityApplication.class, args);
 
- User usersearch=optional.get();
- 
- usersearch.setName("Tiwari");
- 
- User result=userRepository.save(usersearch);
- 
- System.out.println(result);
- 	
- 
- //how to get the data:- Use findById as above
- //Get all data
- 
-Iterable<User> itr= userRepository.findAll();
+		UserRepository userRepository = context.getBean(UserRepository.class);
 
+		/*
+		 * User user=(User) new com.springboot.web.entities.User();
+		 * user.setName("karun1"); user.setCity("sangrur");
+		 * user.setStatus("Java programmer");
+		 * 
+		 * //User user1=userRepository.save(user); User user1=new User();
+		 * user1.setName("ahuja1"); user1.setCity("city2"); user1.setStatus("python ");
+		 * 
+		 * List<User> users=List.of(user1,user);
+		 * 
+		 * //insert Iterable<User> resultUser=userRepository.saveAll(users);
+		 * 
+		 * System.out.println(resultUser);
+		 * 
+		 */
 
-itr.forEach(user-> {System.out.println(user);
-});
-	
-	
+		// update
+		java.util.Optional<User> optional = userRepository.findById(2);
+
+		User usersearch = optional.get();
+
+		usersearch.setName("Tiwari");
+
+		User result = userRepository.save(usersearch);
+
+		System.out.println(result);
+
+		// how to get the data:- Use findById as above
+		// Get all data
+
+		Iterable<User> itr = userRepository.findAll();
+
+		itr.forEach(user -> {
+			System.out.println(user);
+		});
+
 //Deleting the user element
 
-//userRepository.deleteById(3);
-
+		// userRepository.deleteById(3);
 
 //for deleting all
 
-userRepository.deleteAll(itr);
+		// userRepository.deleteAll(itr);
 
+		List<User> userbyname = userRepository.findByName("Ankit");
 
+		userbyname.forEach(e -> System.out.println(e));
+		
+		
+		List<User> userbynameandcity = userRepository.findByNameAndCity("Ankit","Delhi");
 
+		
+
+		userbynameandcity.forEach(e -> System.out.println(e));
+		
+		
+		
 	}
 
 }
